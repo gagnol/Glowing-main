@@ -14,7 +14,7 @@
     "@radix-ui/themes": "^3.0.5",
     "@react-email/components": "^0.0.19",
     "@reduxjs/toolkit": "^2.2.5",
-    "@stripe/stripe-js": "github:stripe/stripe-js",
+    "@stripe/stripe-js": "^4.0.0",
     "axios": "^1.7.2",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.3",
