@@ -35,3 +35,32 @@
 .footer_column {
   @apply  flex-1 flex flex-col gap-3 text-sm min-w-max ;
 }
+
+/* LOGIN REGISTER FORGOT */
+.a_page {
+  @apply flex flex-col py-5 items-center min-h-full  ;
+}
+
+
+.a_container {
+  @apply w-[350px] h-fit flex-col rounded-[5px]   my-5 
+   border-[#666] border-[1px] px-[26px] py-[20px];
+}
+.a_tooltip-header{
+  @apply flex  p-3 bg-[#EAEDED] max-w-[100%] h-[69px]  overflow-x-hidden;
+}
+
+/* color size */
+colorPiked{
+  @apply w-[33px] h-[33px] rounded-md border-2 border-[#c45500]
+  }
+  .colorBox{
+    @apply w-[33px] h-[33px] rounded-md border-[1px]
+  }
+  .sizePiked {
+    @apply w-[133px] h-[33px] border-2 border-white text-white rounded-md
+  }
+  
+  .sizeBox {
+    @apply w-[133px] h-[33px] py-1 text-white cursor-pointer align-bottom rounded-md
+  }

@@ -16,7 +16,7 @@ function Collection() {
                      md:grid-cols-3 lg:grid-cols-3"> 
                       
                         <div className='overflow-hidden'>
-                        <div className="bg-gray-500 min-h-[400px] relative 
+                        <div className="bg-cover min-h-[400px] relative 
                          cursor-pointer hover:scale-105 transition-transform
                           duration-300 ease-in-out"
                             style={{ backgroundImage: "url('./collection-1.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -37,7 +37,7 @@ function Collection() {
                         </div>
 
                         <div className='overflow-hidden'>
-                        <div className="bg-gray-500 min-h-[400px] relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out"
+                        <div className="bg-cover min-h-[400px] relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out"
                             style={{ backgroundImage: "url('./collection-2.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
                             <div className='absolute top-0 left-0 m-8'>
                                 <Text size="7" >Buy 1 Get 1</Text>
@@ -55,7 +55,7 @@ function Collection() {
                         </div>
                         </div>
                         <div className='overflow-hidden'>
-                        <div className="bg-gray-500 min-h-[400px] relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out"
+                        <div className="bg-cover min-h-[400px] relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out"
                             style={{ backgroundImage: "url('./collection-3.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}>
                             <div className='absolute top-0 left-0 m-8'>
                                 <Text size="7" >What&apos;s New?</Text>

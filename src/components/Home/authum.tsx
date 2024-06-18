@@ -11,7 +11,7 @@ function authum() {
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
           <div className='overflow-hidden col-span-1 xl:col-span-3'>
             <div
-              className="bg-gray-500 min-h-[400px] relative
+              className=" min-h-[400px] relative
                cursor-pointer hover:scale-105 transition-transform 
                duration-300 ease-in-out bg-cover bg-center"
               style={{ 
@@ -37,7 +37,7 @@ function authum() {
 
           <div className='overflow-hidden col-span-1 xl:col-span-2'>
             <div
-              className="bg-gray-500 min-h-[400px] relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out"
+              className=" min-h-[400px] relative cursor-pointer hover:scale-105 transition-transform duration-300 ease-in-out"
               style={{ backgroundImage: "url('./banner-2.jpg')", backgroundSize: 'cover', backgroundPosition: 'center' }}
             >
               <div className='absolute top-0 left-0 m-8 w-[200px]'>

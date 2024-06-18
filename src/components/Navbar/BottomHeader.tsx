@@ -13,7 +13,7 @@ const BottomHeader = () => {
      
       <Button variant="ghost" asChild size="4" className="hidden md:inline-flex justify-center h-8 px-2 border border-transparent 
       hover:border-white cursor-pointer duration-300 m-5">
-      <Link href="#home" >
+      <Link href="/" >
        Home
         </Link>
       </Button>

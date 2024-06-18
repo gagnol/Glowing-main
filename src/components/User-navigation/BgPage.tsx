@@ -1,41 +1,6 @@
-"use client";
-import { FormEvent, useState } from "react";
-import axios, { AxiosError } from "axios";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { Button, Separator, Text, TextField } from "@radix-ui/themes";
+import React from 'react'
 
-function Signup() {
-  const [error, setError] = useState();
-  const router = useRouter();
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      const formData = new FormData(event.currentTarget);
-      const signupResponse = await axios.post("/api/auth/signup", {
-        email: formData.get("email"),
-        password: formData.get("password"),
-        name: formData.get("name"),
-      });
-      console.log(signupResponse);
-      const res = await signIn("credentials", {
-        email: signupResponse.data.email,
-        password: formData.get("password"),
-        redirect: false,
-      });
-
-      if (res?.ok) return router.push("/");
-    } catch (error) {
-      console.log(error);
-      if (error instanceof AxiosError) {
-        const errorMessage = error.response?.data.message;
-        setError(errorMessage);
-      }
-    }
-  };
-
+function BgPage({ children }: any) {
   return (
     <div className="a_page" style={{ position: 'relative', width: '100%', height: '100%' }}>
       <svg
@@ -105,56 +70,13 @@ function Signup() {
       </svg>
       <div style={{ position: 'relative', zIndex: 1 }}>
         <div className="w-[350px] h-fit flex-col rounded-[5px]
-      my-5 opacity-75 border border-[#666] 
-     px-[26px] py-[20px] bg-white/10 backdrop-blur-lg shadow-xl">
-          <h1 className='text-[21px] font-bold pb-5'>Create account</h1>
-          <form onSubmit={handleSubmit}>
-            {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
-            <Text size="3" style={{ margin: "5px" }} >Full Name</Text>
-            <TextField.Root size="3"
-              style={{ marginBottom: "10px" }}
-              autoComplete='off'
-              type="text"
-              placeholder="Fullname"
-              className="a_input"
-              name="name"
-            />
-            <Text size="3" style={{ margin: "5px" }} >Email</Text>
-            <TextField.Root size="3"
-              style={{ marginBottom: "10px" }}
-              autoComplete='off'
-              type="email"
-              placeholder="Email"
-              className="a_input"
-              name="email"
-            />
-            <Text size="3" style={{ margin: "5px" }} >Password</Text>
-            <TextField.Root size="3"
-              style={{ marginBottom: "10px" }}
-              autoComplete='off'
-              type="password"
-              placeholder="Password"
-              className="a_input"
-              name="password"
-            />
-
-            <Button variant='surface' size="3" type='submit' style={{ width: "100%", marginTop:"10px" }}>
-              Signup
-            </Button>
-          </form>
-          <br />
-
-        
-          <Text>Already have an account?&nbsp;</Text>
-          <Button variant="ghost" size="2" asChild >
-            <Link href="/signin" >
-              <Text> Sign in</Text>
-            </Link>
-          </Button>
+         text-white my-5 opacity-75 border border-[#666] 
+         px-[26px] py-[20px] bg-white/10 backdrop-blur-lg shadow-xl">
+          {children}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Signup;
+export default BgPage
