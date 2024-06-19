@@ -3,10 +3,8 @@ import { useSelector } from "react-redux";
 import { loadStripe } from "@stripe/stripe-js";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { checkoutOrder, createOrder } from '@/lib/order-actions';
-import { useEffect } from "react";
 import Link from "next/link";
-import { Button, Heading, Text } from "@radix-ui/themes";
+import { Button, Heading, Strong, Text } from "@radix-ui/themes";
 import FormattedPrice from "../FormattedPrice";
 
 interface CartItem {
@@ -24,8 +22,8 @@ const CartPayment = () => {
   const { productData, userInfo } = useSelector(
     (state: any) => state.next
   );
-  const shippingAddress= userInfo.user?.address+","+userInfo.user?.city+","
-  +userInfo.user?.country+","+userInfo.user?.postal 
+  const shippingAddress= (userInfo?.user?.address+","+userInfo?.user?.city+","
+  +userInfo?.user?.country+","+userInfo?.user?.postal )||""
 
   const shipping = (
     productData.reduce(
@@ -64,18 +62,7 @@ const stripePromise = loadStripe(
 );
 const { data: session } = useSession();
 
-useEffect(() => {
-  if (!session || !session.user) {
-    router.push('/signin');
-  }
-  if(!userInfo){
-    router.push('/signin');
-  }
-  
-  
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [session]);
- 
+
 const onCheckout = async () => {
   const order  = {
     name:userInfo.user?.name,
@@ -98,20 +85,20 @@ const onCheckout = async () => {
 }
 
   return (
-    <div className="flex flex-wrap flex-col gap-3 min-w-full bg-[#141726]">
-      <div className="rounded-md border mt-5 p-2 text-white text-center">      
+    <div className="flex flex-wrap flex-col gap-3 min-w-full ">
+      <div className="rounded-md border mt-5 p-2  text-center">      
       <Heading size="5"  >Shipping Info</Heading>
       
-      <Text size="1" >Address:&nbsp;{userInfo?.user.address||""}</Text><br/>
-      <Text size="1">City:&nbsp;{userInfo?.user.city||""}</Text><br/>
-      <Text size="1">Postal Code:&nbsp;{userInfo?.user.postal||""}</Text><br/>
-      <Button variant="surface" size="2" color="indigo" asChild >
+      <Text size="2" >Address:&nbsp;{userInfo?.user?.address||""}</Text><br/>
+      <Text size="2">City:&nbsp;{userInfo?.user?.city||""}</Text><br/>
+      <Text size="2">Postal Code:&nbsp;{userInfo?.user?.postal||""}</Text><br/>
+      <Button variant="surface" size="2" asChild >
       <Link href="/profile">
         Change Info
       </Link>
       </Button>
       </div>
-      <p className="flex items-center justify-between px-1 font-semibold text-white">
+      <p className="flex items-center justify-between px-1 font-semibold ">
         SubTotal: {" "}(
         {(
           productData.reduce((a: number, c: CartItem) => a + c.quantity, 0)
@@ -120,21 +107,23 @@ const onCheckout = async () => {
         <FormattedPrice discountPrice={subTotal}/>
       </p>
       
-      <p className="text-white">
-        Shipping:<span className="float-right pr-1">${shipping}</span>
-      </p>
-      <p className="flex items-center justify-between px-1 font-semibold border-t text-white">
+      <Text size="3">
+       <Strong>Shipping:</Strong> <span className="float-right pr-1">${shipping}</span>
+      </Text>
+      <p className="flex items-center justify-between px-1 font-semibold border-t ">
         Total:{" "}
         <FormattedPrice discountPrice={totalAmount}/>
       </p>
       <div className="flex flex-col items-center">
       <form action={onCheckout} >
-        <button
-          type="submit"
-          className="btn btn-primary btn-outline w-full"
+        <Button
+        variant="classic"
+        size="3"
+        type="submit"
+        
         >
           Order Now
-        </button>
+        </Button>
         </form>
       </div>
     </div>
