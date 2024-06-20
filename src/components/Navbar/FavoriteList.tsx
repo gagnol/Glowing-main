@@ -12,7 +12,7 @@ function FavoriteList() {
     (state:any) => state.next
   );
   return (
-    <div className='mx-5'>
+    <div className='mx-5 min-w-[80px]'>
      {/* fovorite */}
      <Button variant='ghost' size="3" asChild> 
      <Link  href="/favorite">

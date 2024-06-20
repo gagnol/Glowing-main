@@ -20,7 +20,7 @@ import ColorPicker from "@/components/Product-detail/colorPicker";
 import Stars from "@/components/Stars";
 import Middleimage from "@/components/Product-detail/middleImage";
 import FormattedPrice from "@/components/FormattedPrice";
-import { Box,Heading,Strong,Text } from "@radix-ui/themes";
+import { Box, Heading, Strong, Text } from "@radix-ui/themes";
 import DescriptionList from "@/components/Product-detail/description";
 import CardGrid from "@/components/Home/Card";
 
@@ -39,7 +39,7 @@ export default async function ProductDetail({ params }: { params: { slug: string
   const questionProductsDocs = (await TaskModel.find({ product: product._id }, "-reviews"))
   const questionProducts = JSON.parse(JSON.stringify(questionProductsDocs));
 
-  const discountPrice =(product.price - (product.price * (product.discount / 100)))
+  const discountPrice = (product.price - (product.price * (product.discount / 100)))
 
   const videoCounter = product?.video?.length || 0;
   const imageCounter = product?.image?.length || 0;
@@ -73,10 +73,10 @@ export default async function ProductDetail({ params }: { params: { slug: string
   return (
     <Loading>
       <div className="flex flex-wrap sm:justify-center lg:justify-start ml-10 ">
-       
+
         <div >
           <ImageGallery product={product} />
-        
+
         </div>
         <div className="w-[40%] ml-5">
           <h4 className="text-[24px] ">{product.name}</h4>
@@ -84,13 +84,13 @@ export default async function ProductDetail({ params }: { params: { slug: string
           <div className="flex flex-wrap items-center space-x-2 mb-2  border-b-2 ">
             <div className="my-2">
               <div className="flex">
-              <span className="mx-1">{product?.rating}</span>
-              <Stars value={product.rating} />
-                
+                <span className="mx-1">{product?.rating}</span>
+                <Stars value={product.rating} />
+
               </div>
             </div>
             <span className="ml-1">{product.numReviews} ratings </span>
-            
+
           </div>
           <div className='mb-4 '>
             {product.bestSeller === "true" ?
@@ -109,7 +109,7 @@ export default async function ProductDetail({ params }: { params: { slug: string
                 <h5 className="text-[28px] text-[#CC0C39] ">-{product.discount}%</h5>
                 &nbsp;
                 <h4 className="text-[28px] pl-2">
-                  <FormattedPrice discountPrice={discountPrice}/>
+                  <FormattedPrice discountPrice={discountPrice} />
                 </h4>
               </div>
               <div className="flex">
@@ -135,12 +135,12 @@ export default async function ProductDetail({ params }: { params: { slug: string
             <h5 className="text-[14px] font-normal">&nbsp;{product.category}</h5>
           </div>
           {/* COLOR SELECTION */}
-          <SizePicker product={product}/>
-          <ColorPicker product={product}/>
+          <SizePicker product={product} />
+          <ColorPicker product={product} />
           <div className="mt-5">
-            <Text size="4"><Strong>About this product</Strong></Text><br/>
+            <Text size="4"><Strong>About this product</Strong></Text><br />
             <Text size="3" >
-           <DescriptionList description={product.description} />  
+              <DescriptionList description={product.description} />
             </Text>
           </div>
         </div>
@@ -151,7 +151,7 @@ export default async function ProductDetail({ params }: { params: { slug: string
               <div className="flex align-middle">
                 <h4 className="text-[28px] pl-2">
                   <span className=" text-[18px] align-middle">Price: </span>
-                  <FormattedPrice discountPrice={discountPrice}/>
+                  <FormattedPrice discountPrice={discountPrice} />
                 </h4>
               </div>
             </>
@@ -165,18 +165,21 @@ export default async function ProductDetail({ params }: { params: { slug: string
             </div>
           }
 
-          <CountryTaxes discountPrice={discountPrice} product={product}/>
-          <Box>
-          {product.countInStock > 0 ? <>
-            <Text size="4" color="jade">
-             In Stock 
-            </Text>
-            
-            <br />
-            <AddToCart product={product} discountPrice={discountPrice} />
-             </>
-            : <h4 className="text-[18px] text-[#B12704] font-normal my-2">
-              Temporarily out of stock.</h4>}
+          <CountryTaxes discountPrice={discountPrice} product={product} />
+          <br/>
+          <Box my="2">
+            {product.countInStock > 0 ? <>
+              <Text size="4"  color="jade">
+                In Stock
+              </Text>
+
+              <br />
+              <AddToCart product={product} discountPrice={discountPrice} />
+            </>
+              :        
+              <Text size="4" color="red">
+                Temporarily out of stock.
+                </Text>}
           </Box>
           <AddToFavorite product={product} />
           <h4 className="flex text-[14px] text-primary my-1">
@@ -191,7 +194,7 @@ export default async function ProductDetail({ params }: { params: { slug: string
             <h5 className="font-normal text-[14px] my-2">&nbsp;{product.brand}</h5>
           </div>
           <div className="flex my-2">
-            
+
           </div>
           <div className="border-[#D5D9D9] border-[1px] rounded-lg
        bg-light-white relative py-[14px] px-[18px]">
@@ -200,7 +203,7 @@ export default async function ProductDetail({ params }: { params: { slug: string
               src="/logo.png"
               alt=" logo"
               width={50} height={31} />
-           
+
             <br />
             <span >
               <h4 >Try Growing and start saving today with
@@ -212,9 +215,9 @@ export default async function ProductDetail({ params }: { params: { slug: string
           </div>
           <br />
           <label>
-           
+
           </label>
-          
+
         </div>
       </div>
       <br />
@@ -223,27 +226,27 @@ export default async function ProductDetail({ params }: { params: { slug: string
         <br />
         <div className="relative max-w-screen-2xl  px-4 py-4 md:py-4 text-center">
           <Heading size="6">
-          Popular products based on this item
+            Popular products based on this item
           </Heading>
           <Slider >
-          {similar?.map((product:any) => (
-            <div key={product.slug} className="gap-3" >
-            <CardGrid product={product}/>
-            </div>
-          ))}
-            </Slider>
+            {similar?.map((product: any) => (
+              <div key={product.slug} className="gap-3" >
+                <CardGrid product={product} />
+              </div>
+            ))}
+          </Slider>
 
         </div >
         {/******************Sizes ****************/}
-        <Middleimage product={product}/>
+        <Middleimage product={product} />
         {/****************** CUSTOMER REVIEWS ****************/}
         <Text size="7" >
-        Customer reviews
+          Customer reviews
         </Text>
-        <div className="grid grid-cols-2 px-10 py-5">
-          <div className=" grid-cols-1 block mx-5">
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 px-10 py-5">
+          <div className=" col-span-1 xl:col-span-3 ">
             <div className="flex">
-            <Stars value={product.rating} />
+              <Stars value={product.rating} />
               <h1 className="px-2">{product.rating ? product.rating + ' out of 5' : 'Rating not available'}</h1>
             </div>
             <h2>{product.numReviews} Total Ratings</h2>
@@ -268,27 +271,29 @@ export default async function ProductDetail({ params }: { params: { slug: string
             ) : (
               <div className='block '>
                 <p >Review this product</p>
-                <p className='text-neutral-400 text-[14px] my-2'>
-                Share your thoughts with other customers
+                <p className='text-[14px] my-2'>
+                  Share your thoughts with other customers
                 </p>
                 <Link href={`/signin?redirect=/product/${product.slug}`} >
                   <button className="my-[15px] p-1 w-[50%] btn btn-primary btn-outline" >
-                  Write a customer review
+                    Write a customer review
                   </button>
                 </Link>
               </div>
             )}
-
           </div>
-          <div className="grid grid-cols-1 ">
+          <div className="col-span-1 xl:col-span-2 ">
             {product.reviews
-              ?.map((item: any) => (
+              ?.sort((a: any, b: any) => new Date(b.createdAt).getTime() 
+              - new Date(a.createdAt).getTime()) // Sort in descending order
+              .slice(0, 10) // Limit to the first 10 reviews
+              .map((item: any) => (
                 <div key={item._id}>
-                  <Reviews item={item} key={item} />
+                  <Reviews item={item} key={item._id} /> {/* Use item._id for the key */}
                 </div>
               ))
-              .slice(0, 10)
             }
+
 
           </div>
         </div>

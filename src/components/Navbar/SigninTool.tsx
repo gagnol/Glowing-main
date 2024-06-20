@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect } from 'react'
 import * as Popover from '@radix-ui/react-popover';
-import { MixerHorizontalIcon, Cross2Icon } from '@radix-ui/react-icons';
+import {  Cross2Icon } from '@radix-ui/react-icons';
 import { addUser, removeUser } from "@/store/nextSlice"
 import { signOut, useSession } from "next-auth/react";
 import { useDispatch } from 'react-redux'
@@ -42,7 +42,7 @@ function SigninTool() {
         <>
             {session?.user ? (
                 <>
-                    <div >
+                    <div className='min-w-[200px]'>
   <Popover.Root >
   <Popover.Trigger >
   <Avatar
@@ -131,7 +131,7 @@ aria-label="Close">
                 </>
             ) : (
                 <>
-                    <div>
+                    <div className='min-w-[200px]'>
                         <div className='block'>
                             <Button variant='surface' size="3" >
                                 <Link href="/signin" >

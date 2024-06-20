@@ -1,6 +1,6 @@
 "use client"
 import * as Popover from '@radix-ui/react-popover';
-import { Separator, Text } from '@radix-ui/themes'
+import { Button, Separator, Strong, Text } from '@radix-ui/themes'
 import React from 'react'
 import { FaCaretDown } from 'react-icons/fa'
 import FormattedPrice from '../FormattedPrice';
@@ -13,19 +13,19 @@ const CountryTaxes = ({ discountPrice,product }: any) => {
         <> 
               <Popover.Root>
                         <Popover.Trigger >
-                <Text size="2" color='gray' className=" my-2 flex ">
+                <Text size="2"  className=" my-2 flex ">
                     $ {product.shipping} Shipping
                 </Text>
-                <Text   size="2" color='indigo' className="flex py-3 text-primary ">
+                <Button variant="ghost" size="3">
                     Details 
-                    <FaCaretDown className=' text-[14px] pt-2' />
-                </Text>                
+                    <FaCaretDown  />
+                </Button>                
                 </Popover.Trigger>
                 <Popover.Portal >
                         <Popover.Content >
-                    <div className='p-2 bg-[#141726] w-60 h-60'>
+                    <div className='bg-gray-300 p-2 w-60 h-60'>
                         <ul className='m-0 p-0 '>
-                            <h4 className='text-[18px] font-bold p-2 border-b text-white'>
+                            <h4 className='text-[18px] font-bold p-2 border-b'>
                                 Total Price 
                             </h4>
                             <li className="nav_text">Price
@@ -36,11 +36,11 @@ const CountryTaxes = ({ discountPrice,product }: any) => {
                             <li className="nav_text">Shipping
                                 <span className='float-right'>${product.shipping}</span></li>
                                 <Separator size="4" color='jade' />
-                            <h4 className='font-bold text-[14px] pt-2 text-neutral-200'>Total
+                            <Text><Strong>Total</Strong>
                                 <span className='float-right'>
                                 <FormattedPrice discountPrice={totalPrice}/>
                                 </span>
-                            </h4>
+                            </Text>
                         </ul>
                     </div>
                 </Popover.Content>
